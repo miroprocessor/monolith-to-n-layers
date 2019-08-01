@@ -1,20 +1,14 @@
-﻿using System;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Customertreatments1.Data;
+﻿using Microsoft.AspNetCore.Hosting;
 
-[assembly: HostingStartup(typeof(Customertreatments1.Areas.Identity.IdentityHostingStartup))]
-namespace Customertreatments1.Areas.Identity
+[assembly: HostingStartup(typeof(CustomerTreatments.WebAreas.Identity.IdentityHostingStartup))]
+namespace CustomerTreatments.WebAreas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
             });
         }
     }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Customertreatments1.Models
+namespace CustomerTreatments.Web.Models
 {
     public class applicatonuserviewmodel
     {

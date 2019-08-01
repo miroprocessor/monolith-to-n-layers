@@ -3,15 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Customertreatments1.Data;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Customertreatments1.Data.Migrations
+namespace CustomerTreatments.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190723115647_addtabletretments")]
+    partial class addtabletretments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,7 +189,7 @@ namespace Customertreatments1.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Customertreatments1.Models.Treatment", b =>
+            modelBuilder.Entity("CustomerTreatments.Entities.Treatment", b =>
                 {
                     b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
@@ -210,7 +210,7 @@ namespace Customertreatments1.Data.Migrations
                     b.ToTable("Treatments");
                 });
 
-            modelBuilder.Entity("Customertreatments1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("CustomerTreatments.Entities.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 

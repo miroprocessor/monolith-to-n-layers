@@ -3,17 +3,13 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Customertreatments1.Data;
 
-namespace Customertreatments1.Data.Migrations
+namespace CustomerTreatments.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190723113459_updateusertable")]
-    partial class updateusertable
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,7 +187,28 @@ namespace Customertreatments1.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Customertreatments1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("CustomerTreatments.Entities.Treatment", b =>
+                {
+                    b.Property<string>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DailyFood");
+
+                    b.Property<float>("Height");
+
+                    b.Property<string>("ProplemHistory");
+
+                    b.Property<string>("Vitmens");
+
+                    b.Property<float>("Weight");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Treatments");
+                });
+
+            modelBuilder.Entity("CustomerTreatments.Entities.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 

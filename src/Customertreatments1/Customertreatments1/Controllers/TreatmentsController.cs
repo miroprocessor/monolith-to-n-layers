@@ -1,57 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CustomerTreatments.Entities;
+using CustomerTreatments.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Customertreatments1.Data;
-using Customertreatments1.Models;
+using System.Threading.Tasks;
 
-namespace Customertreatments1.Controllers
+namespace CustomerTreatments.WebControllers
 {
     [Authorize]
     public class TreatmentsController : Controller
     {
 
-        private readonly ApplicationDbContext _context;
+        private readonly TreatmentsService _treatmentsService;
 
         private readonly UserManager<IdentityUser> _userManager;
-   
 
-        public TreatmentsController(ApplicationDbContext context,UserManager<IdentityUser> userManager)
+
+        public TreatmentsController(TreatmentsService treatmentsService, UserManager<IdentityUser> userManager)
         {
-            _context = context;
+            _treatmentsService = treatmentsService;
             _userManager = userManager;
 
         }
 
 
-      
 
-    
+
+
         public async Task<IActionResult> Index()
         {
-            var AllTreatments = await _context.Treatments.ToListAsync();
+            var AllTreatments = await _treatmentsService.GetTreatments();
 
 
             return View(AllTreatments);
         }
 
-     
+
         public async Task<IActionResult> Details(string id)
         {
-          
+
             if (id == null)
             {
-                  return NotFound();
+                return NotFound();
 
             }
-            var treatment =  _context.Treatments
-               .FirstOrDefault(a => a.ID == id);
-        
+            var treatment = _treatmentsService.GetTreatment(id);
+
 
             if (treatment == null)
             {
@@ -61,29 +55,28 @@ namespace Customertreatments1.Controllers
             return View(treatment);
         }
 
- 
+
         public IActionResult Create()
         {
-          //  ViewBag.userid = _userManager.GetUserId(HttpContext.User);
-            
+            //  ViewBag.userid = _userManager.GetUserId(HttpContext.User);
+
             return View();
         }
 
-     
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Treatment treatment)
         {
             if (ModelState.IsValid)
-            {  
-                _context.Add(treatment);
-                await _context.SaveChangesAsync();
+            {
+                await _treatmentsService.Add(treatment);
                 return RedirectToAction(nameof(Index));
             }
             return View(treatment);
         }
 
- 
+
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -91,7 +84,7 @@ namespace Customertreatments1.Controllers
                 return NotFound();
             }
 
-            var treatment = await _context.Treatments.FindAsync(id);
+            var treatment = await _treatmentsService.GetTreatment(id);
             if (treatment == null)
             {
                 return NotFound();
@@ -111,15 +104,13 @@ namespace Customertreatments1.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Update(treatment);
-                await _context.SaveChangesAsync();
-
+                await _treatmentsService.Edit(treatment);
                 return RedirectToAction(nameof(Index));
             }
 
             else return View(treatment);
-            }
-        
+        }
+
 
 
         public async Task<IActionResult> Delete(string id)
@@ -129,8 +120,7 @@ namespace Customertreatments1.Controllers
                 return NotFound();
             }
 
-            var treatment = await _context.Treatments
-                .FirstOrDefaultAsync(m => m.ID == id);
+            var treatment = await _treatmentsService.GetTreatment(id);
             if (treatment == null)
             {
                 return NotFound();
@@ -139,18 +129,17 @@ namespace Customertreatments1.Controllers
             return View(treatment);
         }
 
-   
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var treatment = await _context.Treatments.FindAsync(id);
+            var treatment = new Treatment() { ID = id };
 
-            _context.Treatments.Remove(treatment);
-            await _context.SaveChangesAsync();
+            await _treatmentsService.Delete(treatment);
             return RedirectToAction(nameof(Index));
         }
 
-      
+
     }
 }

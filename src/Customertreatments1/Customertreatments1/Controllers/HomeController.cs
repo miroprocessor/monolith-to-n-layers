@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Customertreatments1.Data;
-using Customertreatments1.Models;
+using CustomerTreatments.Web.Models;
 
-namespace Customertreatments1.Controllers
+namespace CustomerTreatments.WebControllers
 {
     [Authorize]
     public class HomeController : Controller
@@ -17,9 +12,9 @@ namespace Customertreatments1.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         //   private ApplicationUserManager _userManager;
 
-        public HomeController( UserManager<IdentityUser> userManager)
+        public HomeController(UserManager<IdentityUser> userManager)
         {
-   
+
             _userManager = userManager;
 
         }
@@ -29,7 +24,7 @@ namespace Customertreatments1.Controllers
 
         public IActionResult Index()
         {
-             var userid = _userManager.GetUserId(HttpContext.User);
+            var userid = _userManager.GetUserId(HttpContext.User);
             IdentityUser user = _userManager.FindByIdAsync(userid).Result;
 
 

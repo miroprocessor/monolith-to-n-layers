@@ -9,9 +9,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Customertreatments1.Models;
+using CustomerTreatments.Web.Models;
+using CustomerTreatments.Entities;
 
-namespace Customertreatments1.Areas.Identity.Pages.Account
+namespace CustomerTreatments.WebAreas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Customertreatments1.Data.Migrations
+namespace CustomerTreatments.Database.Migrations
 {
     public partial class updateusertable : Migration
     {

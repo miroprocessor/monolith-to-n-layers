@@ -1,19 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>aspnet-Taskevaluation1-ABD1BF96-792C-44D7-B757-1B9BD9AAB3BA</UserSecretsId>
-    <AssemblyName>Customertreatments1</AssemblyName>
+    <AssemblyName>CustomerTreatments.Web</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerTreatments.Entities\CustomerTreatments.Entities.csproj" />
+    <ProjectReference Include="..\CustomerTreatments.Services\CustomerTreatments.Services.csproj" />
   </ItemGroup>
 
 </Project>

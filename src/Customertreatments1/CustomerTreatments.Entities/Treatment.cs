@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Customertreatments1.Models
+namespace CustomerTreatments.Entities
 {
-  
+
     public class Treatment
     {
         [Column(TypeName = "nvarchar(450)")]

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Customertreatments1.Areas.Identity.Pages.Account.Manage
+namespace CustomerTreatments.WebAreas.Identity.Pages.Account.Manage
 {
     public class PersonalDataModel : PageModel
     {

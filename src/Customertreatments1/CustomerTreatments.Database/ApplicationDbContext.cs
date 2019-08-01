@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Customertreatments1.Models;
+using CustomerTreatments.Entities;
 
-namespace Customertreatments1.Data
+namespace CustomerTreatments.Database
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -15,6 +12,5 @@ namespace Customertreatments1.Data
         }
         public DbSet<ApplicationUser> applicationUsers { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
-        public DbSet<Customertreatments1.Models.applicatonuserviewmodel> applicatonuserviewmodel { get; set; }
     }
 }
